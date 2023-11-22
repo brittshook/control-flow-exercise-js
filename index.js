@@ -6,9 +6,7 @@ const startNumOfPlants = 20;
 const plantMultiplierPerWeek = 2;
 
 // Calculate max capacity of garden
-function maxCapacityOfPlants(area = areaOfGardenInSqrMeters) {
-    return area / minSpacePerPlantInSqrMeters;
-};
+const maxCapacityOfPlants  = areaOfGardenInSqrMeters / minSpacePerPlantInSqrMeters;
 
 // Task: Predict the plant growth after a specific number of weeks.
 function plantGrowth(weeks, startNum = startNumOfPlants) {
@@ -16,13 +14,13 @@ function plantGrowth(weeks, startNum = startNumOfPlants) {
 };
 
 // Task: Implement control flow to make decisions on whether the plants should be pruned, monitored, or planted:
-function tendPlants(weeks, startNum, area) {
+function tendPlants(weeks, startNum) {
     const numOfPlants = plantGrowth(weeks, startNum);
     let action;
 
-    if (numOfPlants > (0.8 * maxCapacityOfPlants(area))) {
+    if (numOfPlants > (0.8 * maxCapacityOfPlants)) {
         action = 'Prune';
-    } else if (numOfPlants >= (0.5 * maxCapacityOfPlants(area))) { 
+    } else if (numOfPlants >= (0.5 * maxCapacityOfPlants)) { 
         action = 'Monitor';
     } else {
         action = 'Plant';
@@ -51,13 +49,11 @@ console.log(`The radius of the second garden should be ${radiusOf2ndGardenInMete
 
 
 // Part 3: Errors in Judgement
-
 try {
     const newStartNum = 100;
-    const newNumOfPlants = plantGrowth(0, newStartNum);
-    const areaNeeded = newNumOfPlants * minSpacePerPlantInSqrMeters;
+    const areaNeeded = newStartNum * minSpacePerPlantInSqrMeters;
 
-    if (areaNeeded > (0.8 * maxCapacityOfPlants())) {
+    if (areaNeeded > (maxCapacityOfPlants * minSpacePerPlantInSqrMeters) ) {
         throw(`${newStartNum} plants will not fit in the original garden.`)
     } else {
         console.log(`Yay, all ${newStartNum} plants will fit in the original garden.`)
@@ -65,4 +61,3 @@ try {
 } catch(err) {
     console.log(err);
 };
-
