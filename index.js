@@ -1,6 +1,6 @@
 // Part 1: Growing Pains
 
-let areaOfGardenInSqrMeters = (5 ** 2) * Math.PI;
+const areaOfGardenInSqrMeters = (5 ** 2) * Math.PI;
 const minSpacePerPlantInSqrMeters = 0.8;
 let numOfPlants = 20;
 const plantMultiplierPerWeek = 2;
@@ -14,7 +14,7 @@ function tendPlants(weeks, prune = true) {
     let action;
 
     for (let week = 1; week <= weeks; week++) {
-        numOfPlants *= 2;
+        numOfPlants *= plantMultiplierPerWeek;
 
         // Plants would naturally stop growing when at capacity, so return to max capacity if over that
         if (numOfPlants > maxCapacityOfPlants && prune) {
@@ -58,7 +58,7 @@ try {
     numOfPlants = 100;
     const areaNeeded = numOfPlants * minSpacePerPlantInSqrMeters;
 
-    if (areaNeeded > (0.8 * maxCapacityOfPlants)) {
+    if (areaNeeded > areaOfGardenInSqrMeters) {
         throw(`${numOfPlants} plants will not fit in the original garden.`)
     } else {
         console.log(`Yay, all ${numOfPlants} plants will fit in the original garden.`)
