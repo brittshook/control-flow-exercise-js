@@ -16,17 +16,14 @@ function plantGrowth(weeks, startNum = startNumOfPlants) {
 // Task: Implement control flow to make decisions on whether the plants should be pruned, monitored, or planted:
 function tendPlants(weeks, startNum) {
     const numOfPlants = plantGrowth(weeks, startNum);
-    let action;
 
     if (numOfPlants > (0.8 * maxCapacityOfPlants)) {
-        action = 'Prune';
+        return 'Prune';
     } else if (numOfPlants >= (0.5 * maxCapacityOfPlants)) { 
-        action = 'Monitor';
+        return 'Monitor';
     } else {
-        action = 'Plant';
+        return 'Plant';
     };
-
-    return action;
 };
 
 // Show results for 1, 2, and 3 weeks of growth as inputs
