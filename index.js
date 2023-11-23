@@ -26,7 +26,7 @@ function tendPlants(weeks, startNum) {
         action = 'Plant';
     };
 
-    return `You should ${action}`;
+    return action;
 };
 
 // Show results for 1, 2, and 3 weeks of growth as inputs
