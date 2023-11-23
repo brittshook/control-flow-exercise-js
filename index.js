@@ -53,7 +53,7 @@ try {
     const newStartNum = 100;
     const areaNeeded = newStartNum * minSpacePerPlantInSqrMeters;
 
-    if (areaNeeded > (maxCapacityOfPlants * minSpacePerPlantInSqrMeters) ) {
+    if (areaNeeded > areaOfGardenInSqrMeters) {
         throw(`${newStartNum} plants will not fit in the original garden.`)
     } else {
         console.log(`Yay, all ${newStartNum} plants will fit in the original garden.`)
